@@ -1,0 +1,17 @@
+*{
+  padding: 0%;
+  margin: 0%;
+}
+
+  /* Por las indicaciones del Desafio se da a entender que la tabla no se muestra en la pantalla para celulares,por eso agrego el siguiente codigo: */
+
+@media (max-width: 576px) {
+    .ForCellPhones{
+        display: none;
+    *{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    }
+}
