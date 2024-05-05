@@ -86,7 +86,7 @@ function App() {
   }
 
   const Buscar = () => {
-    console.log ("hola")
+    console.log ("Entre en la funcion de buscar")
   }
 
   return (
@@ -94,7 +94,7 @@ function App() {
       <Row >
         <Col  lg={7} xs={{ span: 10, offset: 1}} sm={{ span: 12, offset: 0}}>
         <h1 className="ForCellPhones" >Lista de Colaboradores</h1>
-          <Buscador />
+          <Buscador onChange={Buscar}/>
         </Col>
       </Row>
       <Row className='mt-4 d-flex justify-content-center'>
