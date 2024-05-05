@@ -63,6 +63,12 @@ function App() {
       console.log(newObj , "Nuevo objeto")
       statusAlert("colaborador agregado !", "success")
       AgregarUsuario(newObj)
+
+      nombre.value = ''
+      correo.value = ''
+      edad.value = ''
+      cargo.value = ''
+      telefono.value = ''
     }
   }
 
