@@ -3,6 +3,6 @@ import Form from 'react-bootstrap/Form';
 
 export const Buscador = () => {
   return (
-           <Form.Control type="text" placeholder="Normal text" />
+           <Form.Control type="text" placeholder="Busca un colaborador" className="ForCellPhones"/>
   )
 }
