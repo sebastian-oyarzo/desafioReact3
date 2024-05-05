@@ -73,6 +73,10 @@ function App() {
     setData([...data,nuevoUsuario])    
   };
 
+  const Buscar = () => {
+    console.log ("hola")
+  }
+
   return (
     <Container className='mt-4 center'>
           <h1>Lista de Colaboradores</h1>
