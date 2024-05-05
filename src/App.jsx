@@ -60,6 +60,12 @@ function App() {
       
       console.log(newObj , "Nuevo objeto")
       AgregarUsuario(newObj)
+
+      nombre.value = ''
+      correo.value = ''
+      edad.value = ''
+      cargo.value = ''
+      telefono.value = ''
     }
   }
 
