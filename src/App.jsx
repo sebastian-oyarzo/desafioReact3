@@ -85,8 +85,18 @@ function App() {
     console.log(Alerts)
   }
 
-  const Buscar = () => {
-    console.log ("Entre en la funcion de buscar")
+  const Buscar = (event) => {
+    const valor = event.target.value;
+
+    console.log (valor , "Valor a buscar")
+    console.log (data , "Lo que entra a la funcion")
+
+    const prueba = data.filter (usuario => {
+      return Object.values(usuario).includes(valor)
+    }      
+    )
+
+    console.log (prueba , "Array filtrado")
   }
 
   return (
