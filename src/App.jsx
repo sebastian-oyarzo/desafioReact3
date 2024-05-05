@@ -59,8 +59,13 @@ function App() {
       }
       
       console.log(newObj , "Nuevo objeto")
+      AgregarUsuario(newObj)
     }
   }
+
+  const AgregarUsuario = (nuevoUsuario) => {
+    setData([...data,nuevoUsuario])    
+  };
 
   return (
     <Container className='mt-4 center'>
@@ -72,7 +77,7 @@ function App() {
       </Row>
       <Row className='mt-4 d-flex justify-content-center'>
         <Col  lg={7}>
-          <Listado BaseColaboradores={BaseColaboradores}/>
+          <Listado usuario = {data}/>
         </Col>
         <Col xs={10} lg={{ span: 4, offset: 1}} >
         <Formulario onChange={capturaInput} onSubmit={AgregarNuevoColaborador}/>
