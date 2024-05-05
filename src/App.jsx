@@ -23,7 +23,8 @@ function App() {
       cargo: '',
       telefono: '',
     }
-  )
+  );
+  const [dataFiltrada,setFilter] = useState ([]);
 
   const capturaInput = (event) => {
     const {name,value} = event.target;
@@ -85,17 +86,37 @@ function App() {
     console.log(Alerts)
   }
 
+  const Buscar = (event) => {
+    const valor = event.target.value;
+
+    console.log (valor , "Valor a buscar")
+    console.log (data , "Lo que entra a la funcion")
+
+    const prueba = data.filter(usuario => {
+      return Object.values(usuario).includes(valor)
+    })
+
+    setFilter(
+      data.filter(usuario => {
+        return Object.values(usuario).includes(valor);
+      })
+    )
+         
+    console.log (prueba , "Array filtrado")
+    console.log (dataFiltrada ,"Array filtrado por seteo")
+  }
+
   return (
     <Container className='mt-4 center'>
       <Row >
         <Col  lg={7} xs={{ span: 10, offset: 1}} sm={{ span: 12, offset: 0}}>
         <h1 className="ForCellPhones" >Lista de Colaboradores</h1>
-          <Buscador />
+          <Buscador onChange={Buscar}/>
         </Col>
       </Row>
       <Row className='mt-4 d-flex justify-content-center'>
         <Col  lg={7}>
-          <Listado usuario = {data}/>
+          <Listado usuario = {data} filtrado = {dataFiltrada}/>
         </Col>
         <Col xs={10} lg={{ span: 4, offset: 1}} >
         <Formulario onChange={capturaInput} onSubmit={AgregarNuevoColaborador}/>
