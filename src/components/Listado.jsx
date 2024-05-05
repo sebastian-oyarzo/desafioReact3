@@ -2,7 +2,7 @@ import React from 'react'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const Listado = ({BaseColaboradores}) => {
+export const Listado = ({usuario}) => {
 
 
   return (
@@ -19,8 +19,8 @@ export const Listado = ({BaseColaboradores}) => {
           </tr>
         </thead>
         <tbody>
-            {       BaseColaboradores?.length ? (
-					BaseColaboradores.map((user, index) => (
+            {       usuario?.length ? (
+					usuario.map((user, index) => (
 						<tr key={index}>
 							<td>{user.id}</td>
 							<td>{user.nombre}</td>

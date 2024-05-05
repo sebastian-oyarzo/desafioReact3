@@ -1,4 +1,5 @@
 import './App.css'
+import { useState } from 'react';
 import { Listado } from './components/Listado'
 import {BaseColaboradores} from './data/BaseColaboradores'
 import {Buscador} from './components/Buscador'
@@ -10,6 +11,62 @@ import Col from 'react-bootstrap/Col';
 
 function App() {
 
+  const [data, setData] = useState (BaseColaboradores);
+  const [nuevoColaborador,setColaborador] = useState (
+    {
+      id: '',
+      nombre: '',
+      correo: '',
+      edad: '',
+      cargo: '',
+      telefono: '',
+    }
+  );
+
+  const capturaInput = (event) => {
+    const {name,value} = event.target;
+    console.log ("Estoy ingresando los inputs")
+
+    setColaborador ({
+      ...nuevoColaborador,
+        [name]: value,
+    })
+
+    console.log (nuevoColaborador)
+  }
+
+  const AgregarNuevoColaborador = (event) => {
+    console.log ("Entre en funcion nuevo colaborador")
+    event.preventDefault();
+    const id = data.length + 1;
+    const { nombre, correo, edad, cargo, telefono } = event.target;
+    if(
+        !nombre.value ||
+        !correo.value ||
+        !edad.value ||
+        !cargo.value ||
+        !telefono.value
+    ) {
+      console.log ("No se permiten campos vacios")
+    } else {
+      const newObj = {
+        id,
+        nombre: nombre.value,
+        correo: correo.value,
+        edad: edad.value,
+        cargo:cargo.value,
+        telefono: telefono.value,
+      }
+      
+      console.log(newObj , "Nuevo objeto")
+      AgregarUsuario(newObj)
+    }
+  }
+
+  const AgregarUsuario = (nuevoUsuario) => {
+    setData([...data,nuevoUsuario])    
+  };
+
   return (
     <Container className='mt-4 center'>
           <h1>Lista de Colaboradores</h1>
@@ -20,10 +77,10 @@ function App() {
       </Row>
       <Row className='mt-4 d-flex justify-content-center'>
         <Col  lg={7}>
-          <Listado BaseColaboradores={BaseColaboradores}/>
+          <Listado usuario = {data}/>
         </Col>
         <Col xs={10} lg={{ span: 4, offset: 1}} >
-          <Formulario/>
+        <Formulario onChange={capturaInput} onSubmit={AgregarNuevoColaborador}/>
         </Col>
       </Row>
     </Container>

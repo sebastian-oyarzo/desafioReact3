@@ -1,24 +1,50 @@
-import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-export const Formulario = () => {
-  return (
-    <div>
-      <h2 className='text-center '>Agregar Colaborador</h2>
-        <Form.Control type="text" placeholder="Nombre del Colaborador" />
-      <br />
-        <Form.Control type="email" placeholder="Email del Colaborador" />
-      <br />
-        <Form.Control type="number" placeholder="Edad del colaborador" />
-      <br />
-       <Form.Control type="text" placeholder="Cargo del Colaborador" />
-      <br />
-        <Form.Control type="tel" placeholder="Telefono del Colaborador" />
-      <br />
-      <div className="d-grid gap-2">
-        <Button variant="primary">Agregar Colaborador</Button>{' '}
-      </div>
-    </div>
-  )
+export const Formulario = ({onChange ,onSubmit}) => {
+
+    return (
+        <Form onSubmit={onSubmit}>
+            <Form.Group>
+                <Form.Control 
+                type="text"  
+                name = "nombre" 
+                placeholder="Nombre del Colaborador"
+                onChange={onChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <Form.Control 
+                type="email"  
+                name = "correo" 
+                placeholder="Email del Colaborador"
+                onChange={onChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <Form.Control 
+                type="number" 
+                name = "edad" 
+                min={1}
+                max={100}
+                placeholder="Edad del colaborador"
+                onChange={onChange} />
+            </Form.Group>
+            <Form.Group>
+                <Form.Control type="text" 
+                name = "cargo" 
+                placeholder="Cargo del Colaborador" 
+                onChange={onChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <Form.Control type="tel" 
+                name = "telefono" 
+                placeholder="Telefono del Colaborador" 
+                onChange={onChange}
+                />
+          </Form.Group>        
+          <Button variant="primary" className="d-grid gap-2" type="summit" >Agregar Colaborador</Button>
+        </Form>
+    )
 }
