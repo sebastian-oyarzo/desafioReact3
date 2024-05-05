@@ -83,7 +83,7 @@ function App() {
     <Container className='mt-4 center'>
       <Row >
         <Col  lg={7} xs={{ span: 10, offset: 1}} sm={{ span: 12, offset: 0}}>
-        <h1>Lista de Colaboradores</h1>
+        <h1 className="ForCellPhones" >Lista de Colaboradores</h1>
           <Buscador />
         </Col>
       </Row>
