@@ -17,6 +17,8 @@ function App() {
 
   const [Alerts , setAlerts] = useState({msg:"", vrt:""})
   const [data, setData] = useState (BaseColaboradores)
+  const [dataFiltrada,setFilter] = useState ("")
+
   const [nuevoColaborador,setColaborador] = useState (
     {
       id: '',
@@ -26,19 +28,15 @@ function App() {
       cargo: '',
       telefono: '',
     }
-  );
-  const [dataFiltrada,setFilter] = useState ([]);
+  )
 
   const capturaInput = (event) => {
-    const {name,value} = event.target;
-    console.log ("Estoy ingresando los inputs")
+    const {name,value} = event.target
 
     setColaborador ({
       ...nuevoColaborador,
         [name]: value,
     })
-
-    console.log (nuevoColaborador)
   }
 
   const AgregarNuevoColaborador = (event) => {
@@ -84,18 +82,18 @@ function App() {
       msg: mensaje,
       vrt: variante
     })
-    console.log(Alerts)
   }
 
-  const Buscar = (event) => {
-    const valor = event.target.value;
-
-    setFilter(
-      data.filter(usuario => {
-        return Object.values(usuario).includes(valor);
-      })
-    )
+  const Buscar = (e) => {
+    setFilter(e.target.value)
   }
+
+  const dataYaFiltrados = data.filter((data) =>
+  Object.values(data).some((value) =>
+  typeof value === 'string' && value.toLocaleLowerCase().includes(dataFiltrada.toLocaleLowerCase())
+  ))
+
+  // const dataYaFiltrados = data.filter ((data) => data.nombre.toLowerCase().includes(dataFiltrada.toLowerCase())) este funciona solo por nombres, o edad, o id, osea solo un valor, igual me parecio util dejarlo comentado
 
   return (
     <Container className='mt-4 center'>
@@ -107,7 +105,7 @@ function App() {
       </Row>
       <Row className='mt-4 d-flex justify-content-center'>
         <Col  lg={7}>
-          <Listado usuario = {data} filtrado = {dataFiltrada}/>
+          <Listado usuario = {data} filtrado = {dataYaFiltrados}/>
         </Col>
         <Col xs={10} lg={{ span: 4, offset: 1}} >
         <Formulario onChange={capturaInput} onSubmit={AgregarNuevoColaborador}/>
@@ -115,7 +113,6 @@ function App() {
         </Col>
       </Row>
     </Container>
-  )
-}
+  )}
 
 export default App

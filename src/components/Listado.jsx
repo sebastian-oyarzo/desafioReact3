@@ -19,7 +19,7 @@ export const Listado = ({usuario,filtrado}) => {
         </thead>
         <tbody>
           {
-            filtrado?.length ? ( filtrado.map( (filtro,index) => (
+            filtrado?.length ? ( filtrado.map( (filtro, index) => (
                 <tr key={index}>
                 <td>{filtro.id}</td>
                 <td>{filtro.nombre}</td>
@@ -28,9 +28,8 @@ export const Listado = ({usuario,filtrado}) => {
                 <td>{filtro.cargo}</td>
                 <td>{filtro.telefono}</td>
               </tr>
-            )
-            )
-            ) : usuario?.length ? ( usuario.map( (user, index) => (
+            ))) :
+            usuario?.length ? ( usuario.map( (user, index) => (
               <tr key={index}>
                 <td>{user.id}</td>
                 <td>{user.nombre}</td>

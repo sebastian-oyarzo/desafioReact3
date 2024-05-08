@@ -3,6 +3,13 @@ import Form from 'react-bootstrap/Form';
 
 export const Buscador = ({onChange}) => {
   return (
-           <Form.Control type="text" placeholder="Busca un colaborador" className="ForCellPhones" onChange={onChange}/>
+           <Form.Control
+           className="ForCellPhones"
+           type="text"
+           placeholder="Busca un colaborador"
+
+           name="nombre"
+           onChange={onChange}
+           />
   )
 }
