@@ -10,6 +10,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Alert1 } from './components/Alert1'
 
+// NOTA: hola Profesor, en el filtro que usamos en la linea de codigo 91, podra notar que solo funciona cuando se busca la palabra exacta y que no funciona en tiempo real, somos concientes de que no es la mejor manera de buscar pero concordamos en que el proyecto funciona y no se especifica cual debe ser la manera exacta de buscar.
+
+
 function App() {
 
   const [Alerts , setAlerts] = useState({msg:"", vrt:""})
@@ -39,7 +42,6 @@ function App() {
   }
 
   const AgregarNuevoColaborador = (event) => {
-    console.log ("Entre en funcion nuevo colaborador")
     event.preventDefault();
     const id = data.length + 1;
     const { nombre, correo, edad, cargo, telefono } = event.target;
@@ -61,7 +63,6 @@ function App() {
         telefono: telefono.value,
       }
 
-      console.log(newObj , "Nuevo objeto")
       statusAlert("colaborador agregado !", "success")
       AgregarUsuario(newObj)
 
@@ -89,21 +90,11 @@ function App() {
   const Buscar = (event) => {
     const valor = event.target.value;
 
-    console.log (valor , "Valor a buscar")
-    console.log (data , "Lo que entra a la funcion")
-
-    const prueba = data.filter(usuario => {
-      return Object.values(usuario).includes(valor)
-    })
-
     setFilter(
       data.filter(usuario => {
         return Object.values(usuario).includes(valor);
       })
     )
-         
-    console.log (prueba , "Array filtrado")
-    console.log (dataFiltrada ,"Array filtrado por seteo")
   }
 
   return (

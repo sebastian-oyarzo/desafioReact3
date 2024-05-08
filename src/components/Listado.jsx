@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Listado = ({usuario,filtrado}) => {
 
-  console.log (filtrado , "array de filtrado")
   return (
     <div>
       <Table responsive="lg" striped bordered className='ForCellPhones'>
@@ -40,10 +39,10 @@ export const Listado = ({usuario,filtrado}) => {
                 <td>{user.cargo}</td>
                 <td>{user.telefono}</td>
             </tr>
-            ))) :                
+            ))) :
               <tr>
                 <td colSpan={7}>
-                    <h1>No hay datos 😁</h1>
+                    <h1>No hay datos</h1>
                 </td>
               </tr>
           }
